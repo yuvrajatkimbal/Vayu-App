@@ -1,0 +1,770 @@
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: 'GT Walsheim Pro';
+}
+.f-10 {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+}
+.f-11 {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+}
+.f-12 {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+.f-12_400 {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+.f-13_400 {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+.f-14 {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+.f-14_400 {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+.f-14_500 {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.f-15_400 {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #000 !important;
+}
+.f-15 {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #000 !important;
+}
+.f-16_400 {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+.f-16 {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.f-17 {
+  font-size: 17px !important;
+  font-weight: 500 !important;
+}
+
+.f-18 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+.f-18_400 {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+}
+
+.f-20 {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+.f-20_400 {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+}
+
+.f-20_p-10 {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  padding: 10px 0 !important;
+}
+
+.f-22 {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+}
+.f-24 {
+  font-size: 24px !important;
+  font-weight: 500 !important;
+}
+.f-28 {
+  font-size: 28px !important;
+  font-weight: 500 !important;
+}
+
+.f-25 {
+  font-size: 25px !important;
+  font-weight: 500 !important;
+}
+.f-27 {
+  font-size: 27px !important;
+  font-weight: 500 !important;
+}
+.f-27_600 {
+  font-size: 27px !important;
+  font-weight: 600 !important;
+}
+.f-29 {
+  font-size: 29px !important;
+  font-weight: 500 !important;
+}
+
+.f-30 {
+  font-size: 30px !important;
+  font-weight: 500 !important;
+}
+.f-30_700 {
+  font-size: 30px !important;
+  font-weight: 600 !important;
+}
+
+.f-32 {
+  font-size: 32px !important;
+  font-weight: 500 !important;
+}
+.f-34_700 {
+  font-size: 34px !important;
+  font-weight: 700 !important;
+}
+
+.f-40_700 {
+  font-size: 40px !important;
+  font-weight: 700 !important;
+}
+
+.f-42 {
+  font-size: 42px !important;
+  font-weight: 200 !important;
+}
+
+.f-60 {
+  font-size: 60px !important;
+  font-weight: 500 !important;
+}
+
+.height-72 {
+  height: 71px !important;
+}
+
+.react-datepicker {
+  border-radius: 0px !important;
+  cursor: pointer !important;
+}
+.custom-datepicker-input {
+  font-size: 13px;
+  font-weight: 500 !important;
+  color: #000;
+  padding-left: 7px !important;
+  /* font-family: 'Geist'; */
+  outline: none;
+  box-shadow: none;
+  cursor: pointer !important;
+}
+
+.custom-datepicker {
+  font-size: 14px;
+  font-weight: 500 !important;
+  color: #000;
+  padding-left: 10px !important;
+  /* font-family: 'Geist'; */
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #000 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  height: 40px !important;
+  cursor: pointer !important;
+}
+.custom-datepicker-filter {
+  font-size: 15px;
+  font-weight: 500 !important;
+  color: #000;
+  padding-left: 15px !important;
+  /* font-family: 'Geist'; */
+  outline: none;
+  box-shadow: none;
+  /* border: 1px solid #000 !important; */
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  height: 60px !important;
+  cursor: pointer !important;
+}
+
+.custom-datepicker-input:hover {
+  border-color: #888888 !important;
+}
+
+.custom-datepicker-input:active {
+  border: 0px !important;
+}
+
+.custom-datepicker-input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: inherit;
+}
+
+.custom-datepicker-input::placeholder {
+  font-size: 14px;
+  font-weight: 500 !important;
+  /* font-family: 'Geist'; */
+}
+
+.react-datepicker__day--in-range {
+  background-color: #1773BA !important;
+  border-radius: 0px !important;
+  color: #000;
+  border: 1px solid #000;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__month .react-datepicker__month-text {
+  display: inline-block;
+  width: 8rem;
+  margin: 4px;
+  padding: 6px;
+}
+.react-datepicker__month-text--keyboard-selected {
+  border-radius: 0rem;
+  background-color: #1773BA;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500 !important;
+}
+
+.react-datepicker__day--in-range,
+.react-datepicker__day--selected {
+  border: none !important;
+}
+
+.react-datepicker__day {
+  border-bottom: none !important;
+}
+
+.react-datepicker-popper {
+  z-index: 3 !important;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: #1773BA !important;
+  color: #000 !important;
+}
+
+/* .MuiTableCell-head {
+  padding: 0px !important;
+  border: 1px solid red !important;
+} */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-notallowed {
+  cursor: not-allowed !important;
+}
+
+.react-datepicker__calendar-icon {
+  padding-top: 9px !important;
+  margin-top: 9px !important;
+}
+
+.filter-label-text {
+  color: '#223354' !important;
+  margin-bottom: 8px !important;
+  margin-left: 4px !important;
+  font-weight: 600 !important;
+}
+
+.main-content {
+  flex: 1;
+  /* Grow to fill available space */
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  /* Adjust background color as needed */
+  padding: 10px 0;
+  text-align: center;
+}
+
+.clear-button {
+  width: 150px !important;
+  height: 37px !important;
+}
+
+.sat-button {
+  width: 100px !important;
+  height: 30px !important;
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 5px 11px;
+  line-height: 19px;
+}
+
+.advance-filter-button {
+  width: 200px !important;
+  height: 30px !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 5px 11px;
+  line-height: 19px;
+}
+.down-upload-button {
+  /* min-width: 30px !important;
+  height: 30px !important; */
+  min-width: 40px !important;
+  height: 35px !important;
+  border: 1px solid #000 !important;
+  padding: 20px, 0px, 0px, 0px;
+}
+
+.filter-button {
+  width: 150px !important;
+  height: 53px !important;
+}
+
+.upload-button {
+  width: 123px !important;
+  height: 30px !important;
+  padding: 5px, 11px, 5px, 11px !important;
+}
+.select-all-button {
+  width: 123px !important;
+  height: 30px !important;
+  padding: 5px, 11px, 5px, 11px !important;
+}
+.deselect-all-button {
+  width: 143px !important;
+  height: 30px !important;
+  padding: 5px, 11px, 5px, 11px !important;
+}
+
+.filter-button:focus {
+  outline: 1px solid #000;
+  /* outline-offset: 1px; */
+}
+
+.download-button {
+  width: 150px !important;
+  height: 45px !important;
+}
+
+.download-button:focus {
+  outline: 1px solid #000;
+  /* outline-offset: 1px; */
+}
+
+.clear-button:focus {
+  outline: 1px solid #1773be;
+}
+
+/* Tablets (768px to 1024px) */
+@media only screen and (min-width: 1280px) and (max-width: 1600px) {
+  .clear-button {
+    width: 100px !important;
+    height: 37px !important;
+    /* margin-left: 25px !important; */
+  }
+
+  .filter-button {
+    width: 135px !important;
+    height: 53px !important;
+  }
+}
+
+.custom-design .Mui-disabled {
+  cursor: not-allowed !important;
+}
+
+.Mui-disabled {
+  cursor: not-allowed !important;
+}
+
+.modal-header-style {
+  color: #fff;
+  background: #0e4573;
+}
+
+.table-border {
+  border: '1px solid #ddd !important';
+}
+
+.MuiFormControlLabel-label {
+  font-weight: 600 !important;
+}
+
+.react-toast-notifications__toast__icon-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.react-toast-notifications__toast__dismiss-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.react-toast-notifications__toast__content {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.MuiFormHelperText-root {
+  margin: 3px 0px !important;
+  color: red !important;
+}
+
+.MuiTypography-root {
+  margin-left: 0px !important;
+}
+
+.custom-scrollbar {
+  /* Scrollbar for Webkit browsers (e.g., Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 25px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #000; /* Black track background */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #000; /* Black scrollbar thumb */
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #333; /* Darker shade when hovered */
+  }
+
+  /* Scrollbar for Firefox */
+  scrollbar-width: thin; /* Thinner scrollbar */
+  scrollbar-color: #111 #f1f1f1; /* Black thumb with black track */
+}
+
+.MuiTableSortLabel-icon {
+  display: none;
+}
+
+.outer-box {
+  border: 1px solid #000;
+  height: 55px;
+}
+
+.border-black {
+  border: 1px solid #000;
+}
+
+.d-flex {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.d-flex-justify-end {
+  display: flex !important;
+  justify-content: end !important;
+  align-items: center !important;
+}
+.d-flex-justify-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.grid-system .MuiTabs-flexContainer {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+}
+
+#grid-system .MuiTabs-flexContainer {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.link-font-size {
+  font-size: 17px !important;
+  font-weight: 400 !important;
+}
+
+.tab-button {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+}
+
+.tab-btn {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.custom-textfield {
+  padding: 12px 0 !important;
+}
+
+.css-1w9yse8-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active {
+  font-weight: 500 !important;
+}
+
+.pl-zero {
+  padding-left: 0px !important;
+}
+
+.border-right {
+  border-right: 1px solid black !important;
+}
+.border-left {
+  border-left: 1px solid black !important;
+}
+
+.top-left-border {
+  border-top: 1px solid black !important;
+  border-right: 1px solid black !important;
+  border-bottom: 1px solid black !important;
+  background-color: #82ff88 !important;
+}
+
+.bottom-left-border {
+  border-right: 1px solid black !important;
+  background-color: #ffd1d1 !important;
+  padding-left: 27px !important;
+}
+
+.top-center-border {
+  border-top: 1px solid black !important;
+  border-right: 1px solid black !important;
+  border-bottom: 1px solid black !important;
+}
+
+.top-right-border {
+  border-top: 1px solid black !important;
+  border-bottom: 1px solid black !important;
+}
+
+.box1-style {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  padding: 15px 0 !important;
+  padding-left: 27px !important;
+}
+
+.box2-style {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  padding: 15px 0 !important;
+}
+
+.events-card {
+  border: 1px solid #000;
+  padding-left: 0px !important;
+}
+
+.events-container {
+  border-bottom: 1px solid black !important;
+  background-color: #ffd1d1 !important;
+  width: 100% !important;
+}
+
+.events-footer-left {
+  background-color: #ffd1d1 !important;
+  border-top: 1px solid black !important;
+  border-right: 1px solid black !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.events-footer-right {
+  border-top: 1px solid black !important;
+  background: #fff;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: end;
+  padding-right: 36px !important;
+}
+.notification-box {
+  background-color: #d1eefa;
+  padding: 18px;
+  margin-bottom: 18px;
+  border: 1px solid #000;
+}
+.sat-buttons {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sat-apply-btn {
+  margin-top: 0px !important;
+  background: #fff !important;
+  border: 1px solid #000 !important;
+  border-radius: 0px !important;
+  padding-left: 0px !important;
+  padding-bottom: 0px !important;
+}
+.toggle-section {
+  transition: opacity 0.8s ease, height 0.8s ease-in-out;
+  opacity: 1;
+  height: auto;
+  visibility: visible;
+  overflow: hidden;
+}
+
+.toggle-section.hidden {
+  opacity: 0;
+  height: 0;
+  visibility: hidden;
+  transition: opacity 0.9s ease-in-out, height 0.9s ease;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000; /* Handle color */
+  border-radius: 0px; /* Handle border radius */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #000; /* Handle color on hover */
+}
+#scroll-axis > div {
+  overflow-x: hidden !important;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px !important;
+  background: #fff;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-position: center;
+}
+
+/* 
+.swiper-slide {
+  font-size: 18px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+} */
+
+/* 
+ 
+
+.swiper-slide {
+  font-size: 18px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide .title {
+  font-size: 41px;
+  font-weight: 300;
+}
+
+.swiper-slide .subtitle {
+  font-size: 21px;
+}
+
+.swiper-slide .text {
+  font-size: 14px;
+  max-width: 400px;
+  line-height: 1.3;
+} */
+
+.position-absolute {
+  position: absolute !important;
+}
+.position-relative {
+  position: relative !important;
+}
+
+
+#custom-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.css-gcrpoc-MuiInputBase-root-MuiTablePagination-select {
+  margin-right: 10px !important;
+}
+
+.menu-container {
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.menu-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.chart-container {
+  font-family: 'Arial, sans-serif' !important;
+}
+
