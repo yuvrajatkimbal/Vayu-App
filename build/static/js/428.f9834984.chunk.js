@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkHES_Vayu=self.webpackChunkHES_Vayu||[]).push([[428],{5428:(e,s,u)=>{u.r(s),u.d(s,{default:()=>t});var h=u(6971),l=u(6446),r=u(579);const t=e=>{let{children:s}=e;return(0,r.jsx)(l.A,{sx:{flex:1,height:"100%"},children:s||(0,r.jsx)(h.sv,{})})}}}]);
+//# sourceMappingURL=428.f9834984.chunk.js.map

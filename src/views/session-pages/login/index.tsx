@@ -44,6 +44,7 @@ const index = () => {
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
+
     e.preventDefault();
     setEmailError(false);
     setEmailErrorMessage("");
@@ -77,6 +78,7 @@ const index = () => {
     if (!hasError) {
       setLoading(true);
       try {
+
         clearCache();
         const res = await dispatch(
           loginAction({
@@ -155,7 +157,10 @@ const index = () => {
   return (
     <>
       {loading && <CustomBackdrop open={loading} />}
-      <MainWrapper label={"Login"} submitHandler={handleSubmit}>
+      <MainWrapper label={"Login"} submitHandler={(e)=>{
+        // handleSubmit(e);
+        navigate('/');
+      }}>
         <Box>
           <Box mt={3} mb={2}>
             <Typography className="f-25"> Login </Typography>
