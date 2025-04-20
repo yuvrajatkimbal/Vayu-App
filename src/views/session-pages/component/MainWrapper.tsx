@@ -4,9 +4,9 @@ import { FormEvent, ReactNode } from "react";
 import SwipperWrapper from "./SwipperWrapper";
 import Logo from "src/components/LogoSign";
 import { useTheme } from "@mui/material";
-import { RightIcon } from "src/assets/svg/svg";
 import MuiCard from "@mui/material/Card";
 import styled from "@emotion/styled";
+import { RightIcon } from "src/assets/svg/svg";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",

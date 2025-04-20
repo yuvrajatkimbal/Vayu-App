@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 import { useSelector } from 'react-redux';
-import { ApraavaLogoIcon, NextIcon } from 'src/assets/svg/svg';
 import HeaderButtons from './Buttons';
 import ProjectFilter from 'src/components/ProjectFilter';
 import {

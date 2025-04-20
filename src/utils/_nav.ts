@@ -1,66 +1,65 @@
 import {
-  NMSDashboard,
-  NMSDashboardActive,
-  NMSGatewayIcon,
-  NMSGatewayIconActive,
-  NMSNodesIcon,
-  NMSNodesIconActive,
-  NMSReportIcon,
-  NMSTopologysIcon,
-  NMSTopologysIconActive,
-  ReportsIconActive,
-  VayuCommandsIcon
+  VayuCommandsActiveIcon,
+  VayuCommandsIcon,
+  VayuDownloadDataActiveIcon,
+  VayuDownloadDataIcon,
+  VayuProfileActiveIcon,
+  VayuProfileIcon,
+  // VayuUserGroupsActiveIcon,
+  // VayuUserGroupsIcon,
+  VayuUserIcon,
+  VayuUserActiveIcon,
+  MetersIcon,
+  MetersIconActive,
+  CommandsIcon,
+  CommandsIconActive,
+  ExportIcon,
+  VayuUserGroupsActiveIcon,
+  VayuUserGroupsIcon
 } from "../assets/svg/svg";
 
 
 export const vayuSidebarItems = [
   {
-    name: "Commands",
-    path: "/commands",
-    icon: NMSDashboard,
-    activeIcon: NMSDashboardActive,
-    key: "Commands"
+    name: "Meters",
+    path: "/meters",
+    icon:MetersIcon,
+    activeIcon: MetersIconActive,
+    key:"Meters"
   },
   {
-    name: "Field User Groups",
-    path: "/field_user_groups",
-    icon: NMSNodesIcon,
-    activeIcon: NMSNodesIconActive,
-    key: "Field User Groups"
+    name: "Commands",
+    path: "/commands",
+    icon: CommandsIcon,
+    activeIcon: CommandsIconActive,
+    key: "Commands"
   },
   {
     name: "Field Users",
     path: "/field_users",
-    icon: NMSGatewayIcon,
-    activeIcon: NMSGatewayIconActive,
+    icon: VayuUserIcon,
+    activeIcon: VayuUserActiveIcon,
     key: "Field Users"
   },
-  // {
-  //   name: 'Maps',
-  //   path: '/maps',
-  //   activeIcon: NMSMapsActiveIcon,
-  //   icon: NMSMapsIcon,
-  //   key: 'Maps'
-  // },
   {
-    name: "My Profile",
-    path: "/my_profile",
-    icon: NMSTopologysIcon,
-    activeIcon: NMSTopologysIconActive,
-    key: "my_profile"
+    name: "Field User Groups",
+    path: "/field_user_groups",
+    icon: VayuUserGroupsIcon,
+    activeIcon: VayuUserGroupsActiveIcon,
+    key: "Field User Groups"
   },
-  // {
-  //   name: 'Network Planning',
-  //   path: '/network_planning',
-  //   icon: NMSNetworkPlanningIcon,
-  //   activeIcon:NMSNetworkPlanningActiveIcon,
-  //   key: 'Network Planning'
-  // },
   {
     name: "Download Data",
     path: "/download_data",
-    icon: NMSReportIcon,
-    activeIcon: ReportsIconActive,
+    icon: VayuDownloadDataIcon,
+    activeIcon: VayuDownloadDataActiveIcon,
     key: "Download Data"
-  }
+  },
+  {
+    name: "My Profile",
+    path: "/my_profile",
+    icon: VayuProfileIcon,
+    activeIcon: VayuProfileActiveIcon,
+    key: "my_profile"
+  },
 ];

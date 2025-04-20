@@ -1,15 +1,15 @@
-import { Box, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
+import { Box, IconButton, Menu, MenuItem, Stack, Tooltip } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDownloadDetails, sendDownloadRequest } from "src/api/Meters";
-import {toast} from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import {
+  LogOutIcon,
   NMSUserIcon,
   NotificationDotIcon,
   NotificationIcon,
-  PeopleIcon,
-  SettingsIcon,
-  UnreadNotificationIcon
+  UnreadNotificationIcon,
+  VayuProfileIcon
 } from "src/assets/svg/svg";
 import NotificationDrawer from "src/components/Drawer";
 import {
@@ -169,27 +169,29 @@ function HeaderNotifications() {
             sx: {
               p: 0,
               mt: 1,
-              // borderRadius: 2,
-              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)", // soft dark shadow
-              backgroundColor: "background.paper" // uses theme background
+              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+              backgroundColor: "background.paper"
             }
           }}
           MenuListProps={{
-            sx: {
-              p: 0
-            }
+            sx: { p: 0 }
           }}
         >
           <MenuItem
-            onClick={()=>{
-              navigate('/my_profile')
-            }}
+            onClick={() => navigate("/my_profile")}
             sx={{ color: "black", px: 2, py: 1 }}
           >
-            Profile
+            <Stack direction="row" alignItems="center" spacing={1}>
+              {/* <VayuProfileIcon /> */}
+              <Box component="span">Profile</Box>
+            </Stack>
           </MenuItem>
+
           <MenuItem onClick={handleLogout} sx={{ px: 2, py: 1 }}>
-            Logout
+            <Stack direction="row" alignItems="center" spacing={1}>
+              {/* <LogOutIcon /> */}
+              <Box component="span">Logout</Box>
+            </Stack>
           </MenuItem>
         </Menu>
       </Box>

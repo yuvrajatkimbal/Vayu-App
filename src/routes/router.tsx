@@ -46,6 +46,7 @@ const FieldUserGroups = Loader(
 const FieldUsers = Loader(
   lazy(() => import("../views/pages/FieldUsers/index"))
 );
+const Meters = Loader(lazy(() => import("../views/pages/Meters/index")));
 const MyProfile = Loader(lazy(() => import("../views/pages/MyProfile/index")));
 // const IndividualNodeScreen = Loader(
 //   lazy(() => import('src/views/pages/Nodes/Node Overview/index'))
@@ -119,6 +120,10 @@ const routes: RouteObject[] = [
       {
         path: "/field_users",
         element: <PrivateRoute element={FieldUsers} />
+      },
+      {
+        path: "/meters",
+        element: <PrivateRoute element={Meters} />
       },
       {
         path: "/my_profile",

@@ -23,7 +23,7 @@ import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import ArticleSharpIcon from '@mui/icons-material/ArticleSharp';
 import {
   ClientIcon,
-  HESCommandsIcon,
+  // HESCommandsIcon,
   PeopleIcon,
   SettingIcon
 } from 'src/assets/svg/svg';
