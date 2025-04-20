@@ -4,7 +4,7 @@ import { CustomPopUpModal } from 'src/models/customModal';
 import Header from './Header';
 import CommonTable from 'src/components/Table/CommonTable';
 import { StyledTableCell } from 'src/components/StyledComponents/Table';
-import { useToasts } from 'react-toast-notifications';
+import toast from 'react-hot-toast';
 import {
   Box,
   Button,
@@ -70,7 +70,7 @@ const RoleManagement = () => {
   const [selectedEditData, setSelectedEditData] = useState(null);
 
   const dispatch = useDispatch();
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();
 
   const fetchList = (payload) => {
     setLoading(true);
@@ -116,9 +116,7 @@ const RoleManagement = () => {
         setSelectedEmails([]);
         setShow(false);
         setIsBulk(false);
-        addToast(res.message, {
-          appearance: 'success'
-        });
+        toast.success(res?.msg);
         fetchList(filterData);
       }
     } catch (error) {

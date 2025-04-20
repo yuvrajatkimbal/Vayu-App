@@ -42,13 +42,14 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import TableHeaderCell from "./TableHeaderCell";
-import { useToasts } from "react-toast-notifications";
+// import { useToasts } from "react-toast-notifications";
 import { CustomSwitch } from "../CustomSwitch";
 import { tabsEnum } from "src/utils/const";
 import CommandStatusChip from "../CommandStatus";
 import moment from "moment";
 import getCellContent from "./GetCellContent";
 import { setLocalStorage } from "src/utils/helper";
+import CommonTableInterface from "./interface";
 
 const CustomPreviousIcon = (props) => (
   <NavigateBeforeIcon {...props} style={{ fontSize: "20px" }} />
@@ -91,7 +92,7 @@ const CommonTable: React.FC<CommonTableInterface> = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();
 
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState<"asc" | "desc">("asc");

@@ -34,3 +34,6 @@ interface CommonTableInterface {
   handleRowSelection?: (rowId: number) => void; // Function to toggle row selection
   handleSelectAll?: (rows: any[]) => void; // Function to select/deselect all
 }
+
+
+export default CommonTableInterface;

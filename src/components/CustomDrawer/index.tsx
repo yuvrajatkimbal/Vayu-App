@@ -13,7 +13,8 @@ import { styled } from "@mui/material/styles";
 
 import { Clear, CropSquareSharp } from "@mui/icons-material";
 import { showToast } from "src/customHooks/ToastEmitter";
-import { useToasts } from "react-toast-notifications";
+// import { useToasts } from "react-toast-notifications";
+import {toast} from 'react-hot-toast';
 
 interface CustomDrawerProps {
   toggleDrawer?: () => void;
@@ -54,12 +55,10 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({
   isCancel
 }) => {
   const theme = useTheme();
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();
 
   const showToastMsg = () => {
-    addToast("Filter Cleared", {
-      appearance: "success"
-    });
+    toast.success("Filter Cleared");
   };
 
   return (

@@ -71,3 +71,6 @@
 // };
 
 // export default VaaniImage;
+
+
+export {};

@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
-import { useToasts } from 'react-toast-notifications';
-import { toastEmitter } from './ToastEmitter';
+import React, { useEffect } from "react";
+import { toast } from "react-hot-toast";
+import { toastEmitter } from "./ToastEmitter";
 
 export const ToastListener: React.FC = () => {
-  const { addToast } = useToasts();
-
   useEffect(() => {
-    const handleToast = ({ message, options }: { message: string; options: any }) => {
-      addToast(message, options);
+    const handleToast = ({
+      message,
+      options
+    }: {
+      message: string;
+      options?: any;
+    }) => {
+      toast(message, options); // Use react-hot-toast's toast function
     };
 
-    toastEmitter.on('show-toast', handleToast);
+    toastEmitter.on("show-toast", handleToast);
 
     return () => {
-      toastEmitter.off('show-toast', handleToast);
+      toastEmitter.off("show-toast", handleToast);
     };
-  }, [addToast]);
+  }, []);
 
   return null;
-}  
+};

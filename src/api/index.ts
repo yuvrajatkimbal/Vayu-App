@@ -168,7 +168,7 @@
 import axios from 'axios';
 import { getErrorMessage, getLocalStorage } from 'src/utils/helper';
 
-const baseURL = process.env.REACT_APP_BASE_URL_MAIN_NMS;
+const baseURL = process.env.REACT_APP_BASE_URL_MAIN_VAYU;
 
 export const instance = axios.create({
   baseURL,

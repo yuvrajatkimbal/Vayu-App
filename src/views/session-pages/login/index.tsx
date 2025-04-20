@@ -9,6 +9,7 @@ import {
   Typography
 } from "@mui/material";
 import React, { useState } from "react";
+import {toast} from 'react-hot-toast';
 import MainWrapper from "../component/MainWrapper";
 import { useDispatch } from "react-redux";
 import { handleActiveSessionAction, loginAction } from "../../../api/auth";
@@ -158,6 +159,7 @@ const index = () => {
     <>
       {loading && <CustomBackdrop open={loading} />}
       <MainWrapper label={"Login"} submitHandler={(e)=>{
+        toast.success("Welcome to HES Vayu App");
         // handleSubmit(e);
         navigate('/');
       }}>

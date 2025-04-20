@@ -1,6 +1,5 @@
 import { Box, Menu, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { styled } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProject } from 'src/reducers/common';
 import { CustomMenuItem } from '../CustomMenuItem';

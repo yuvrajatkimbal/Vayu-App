@@ -2,6 +2,7 @@ import { Box, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDownloadDetails, sendDownloadRequest } from "src/api/Meters";
+import {toast} from 'react-hot-toast';
 import {
   NMSUserIcon,
   NotificationDotIcon,
@@ -19,11 +20,12 @@ import {
 } from "src/utils/helper";
 import HeaderUserbox from "../../Userbox";
 import moment from "moment";
+import { Navigate, useNavigate } from "react-router";
 
 function HeaderNotifications() {
   const ref = useRef<any>(null);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { downloadList } = useSelector((state: any) => state.meters);
 
   const [open, setOpen] = React.useState(false);
@@ -90,6 +92,8 @@ function HeaderNotifications() {
   };
 
   const handleLogout = () => {
+    toast.success("User has been logged out");
+    navigate("/login");
     handleClose();
     // Add your logout logic here
     console.log("Logged out");
@@ -156,34 +160,38 @@ function HeaderNotifications() {
           </IconButton>
         </Tooltip>
         <Menu
-  anchorEl={anchorEl}
-  open={openAccountsMenu}
-  onClose={handleClose}
-  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-  transformOrigin={{ vertical: "top", horizontal: "right" }}
-  PaperProps={{
-    sx: {
-      p: 0,
-      mt: 1,
-      // borderRadius: 2,
-      boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)", // soft dark shadow
-      backgroundColor: "background.paper", // uses theme background
-    },
-  }}
-  MenuListProps={{
-    sx: {
-      p: 0,
-    },
-  }}
->
-  <MenuItem onClick={handleLogout} sx={{ color: "black", px: 2, py: 1 }}>
-    Profile
-  </MenuItem>
-  <MenuItem onClick={handleLogout} sx={{ px: 2, py: 1 }}>
-    Logout
-  </MenuItem>
-</Menu>
-
+          anchorEl={anchorEl}
+          open={openAccountsMenu}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          transformOrigin={{ vertical: "top", horizontal: "right" }}
+          PaperProps={{
+            sx: {
+              p: 0,
+              mt: 1,
+              // borderRadius: 2,
+              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)", // soft dark shadow
+              backgroundColor: "background.paper" // uses theme background
+            }
+          }}
+          MenuListProps={{
+            sx: {
+              p: 0
+            }
+          }}
+        >
+          <MenuItem
+            onClick={()=>{
+              navigate('/my_profile')
+            }}
+            sx={{ color: "black", px: 2, py: 1 }}
+          >
+            Profile
+          </MenuItem>
+          <MenuItem onClick={handleLogout} sx={{ px: 2, py: 1 }}>
+            Logout
+          </MenuItem>
+        </Menu>
       </Box>
 
       <NotificationDrawer

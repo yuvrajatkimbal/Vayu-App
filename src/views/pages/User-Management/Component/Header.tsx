@@ -45,7 +45,7 @@ import {
   updateRoleModuleMapping,
   updateUserDetail
 } from 'src/api/AccessManagement';
-import { useToasts } from 'react-toast-notifications';
+import toast from 'react-hot-toast';
 import { Checkbox, List, ListItem } from '@mui/material';
 import { findRoles, hasPermission } from 'src/utils/permission';
 import { getMeterProjectList } from 'src/api/common';
@@ -580,7 +580,6 @@ const Header: React.FC<HeaderProps> = ({
   const phoneRegex = /^[6-9]\d{9}$/;
 
   const theme = useTheme();
-  const { addToast } = useToasts();
   const refHandler = useRef(null);
   const refRoleHandler = useRef(null);
   const { roles, moduleList } = useSelector(
@@ -692,9 +691,7 @@ const Header: React.FC<HeaderProps> = ({
           setLoading(false);
           toggleDrawer();
           fetchList();
-          addToast(res.Message, {
-            appearance: 'success'
-          });
+          toast.success(res.Message);
         }
       } catch (error) {
         setLoading(false);
@@ -702,9 +699,7 @@ const Header: React.FC<HeaderProps> = ({
         // setFormState(defaultPaylod);
       }
     } else {
-      addToast('Fields are required', {
-        appearance: 'success'
-      });
+      toast.success('Fields are required');
     }
   };
 
@@ -809,16 +804,12 @@ const Header: React.FC<HeaderProps> = ({
           toggleDrawer();
           setFormState(defaultFormData);
           fetchList();
-          addToast(res.message, {
-            appearance: 'success'
-          });
+          toast.success(res.message);
         }
       } catch (error) {
         setLoading(false);
         toggleDrawer();
-        addToast(error?.data?.errors?.Message, {
-          appearance: 'error'
-        });
+        toast.error(error?.data?.errors?.Message);
         setFormState(defaultFormData);
         // addToast(res.message, {
         //   appearance: 'success'

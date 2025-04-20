@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import toast from 'react-hot-toast';
 import {
   Box,
   Button,
@@ -24,7 +24,7 @@ import NotFoundData from '../../../../components/NotFound';
 import CustomBackdrop from 'src/components/CustomBackdrop/CustomBackdrop';
 import { CustomPopUpModal } from 'src/models/customModal';
 import { Delete, Visibility } from '@mui/icons-material';
-import { useToasts } from 'react-toast-notifications';
+// import { useToasts } from 'react-toast-notifications';
 import Header from './Header';
 import { findRoles, hasPermission } from 'src/utils/permission';
 
@@ -92,7 +92,7 @@ const UserManagement = () => {
   const [selectedEditData, setSelectedEditData] = useState(null);
 
   const dispatch = useDispatch();
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();
 
   const fetchList = (payload) => {
     setLoading(true);
@@ -395,9 +395,7 @@ const UserManagement = () => {
         setSelectedEmails([]);
         setShow(false);
         setIsBulk(false);
-        addToast(res.message, {
-          appearance: 'success'
-        });
+        toast.success(res.message);
         fetchList(filterData);
       }
     } catch (error) {
