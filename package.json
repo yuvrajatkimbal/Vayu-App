@@ -20,7 +20,6 @@
     "@mui/x-data-grid": "^6.18.7",
     "@react-google-maps/api": "^2.20.5",
     "@reduxjs/toolkit": "^1.9.5",
-    "@sinhaludyog/kimbal-topology": "git+https://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@github.com/sinhaludyog/kimbal-topology.git",
     "@szhsin/react-menu": "^4.3.0",
     "@types/react": "17.0.40",
     "@types/react-dom": "17.0.13",
