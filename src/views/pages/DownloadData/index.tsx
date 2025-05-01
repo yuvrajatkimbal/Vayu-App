@@ -22,12 +22,11 @@ const DownloadData = () => {
     <Paper
       elevation={1}
       sx={{
-        maxWidth: 900,
-        margin: "60px auto",
-        p: 4,
-        borderRadius: 4,
-        background: `linear-gradient(145deg, #1773BA70, #FFFFFFFF)`,
-        boxShadow: "0 10px 40px rgba(0,0,0,0.08)"
+        p: 2,
+        mt: 8,
+        border: "1px solid #000000FF",
+        borderRadius: 0,
+        backgroundColor: "grey.90"
       }}
     >
       <Grid container spacing={4}>
@@ -80,21 +79,18 @@ const DownloadData = () => {
 
         {/* Export Button */}
         <Button
-          onClick={()=>{}}
+          onClick={() => {}}
           variant="contained"
-          // startIcon={<GroupAddIcon />}
+          size="medium"
+          color="primary"
           sx={{
-            background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
             color: "#fff",
-            borderRadius: 2,
+            borderRadius: 0,
+            border: "1px solid #000000FF",
+
             px: 2,
-            mx:4,
-            mt:4,
-            textTransform: "none",
-            boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)", // You can tweak this shadow if needed
-            "&:hover": {
-              background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
-            }
+            mx: 4,
+            mt: 4
           }}
         >
           Export

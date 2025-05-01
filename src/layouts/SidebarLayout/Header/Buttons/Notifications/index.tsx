@@ -178,11 +178,13 @@ function HeaderNotifications() {
           }}
         >
           <MenuItem
-            onClick={() => navigate("/my_profile")}
+            onClick={() => {
+              handleClose(); // Close the menu first
+              navigate("/profile"); // Then navigate
+            }}
             sx={{ color: "black", px: 2, py: 1 }}
           >
             <Stack direction="row" alignItems="center" spacing={1}>
-              {/* <VayuProfileIcon /> */}
               <Box component="span">Profile</Box>
             </Stack>
           </MenuItem>

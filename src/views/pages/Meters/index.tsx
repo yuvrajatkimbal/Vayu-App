@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -13,7 +13,14 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import Table from "src/components/Table/Table";
 import CustomTable from "src/components/Table/Table";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+// import { FileUploadDialog } from "src/components/DialogBox/UploadDialog";
+import * as XLSX from "xlsx";
 import { FileUploadDialog } from "src/components/DialogBox/UploadDialog";
+import { setPageTitle } from "src/reducers/common";
+import { setLocalStorage } from "src/utils/helper";
+import { useDispatch } from "react-redux";
+import { UploadIcon, VayuBulkUploadIcon } from "src/assets/svg/svg";
+import { CloudUpload } from "@mui/icons-material";
 
 const columns = [
   { field: "meterNumber", headerName: "Meter Number", width: 150 },
@@ -74,14 +81,15 @@ export default function Meters() {
 
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTitle, setDialogTitle] = useState("");
+  const dispatch = useDispatch();
 
   const handleBulkCancelCommands = () => {
-    setDialogTitle("Bulk Cancel Commands");
+    setDialogTitle("Bulk Upload");
     setOpenDialog(true);
   };
 
   const handleBulkUploadCommands = () => {
-    setDialogTitle("Bulk Upload Commands");
+    setDialogTitle("Bulk Upload");
     setOpenDialog(true);
   };
 
@@ -108,43 +116,48 @@ export default function Meters() {
     link.click();
   };
 
+  const exportExcel = () => {
+    // Create headers
+    const headers = columns.map((c) => c.headerName);
+
+    // Create data rows
+    const data = rows.map((row) => columns.map((col) => row[col.field]));
+
+    // Combine headers and data
+    const worksheetData = [headers, ...data];
+
+    // Create worksheet and workbook
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Export to file
+    XLSX.writeFile(workbook, "table_data.xlsx");
+  };
+
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" mb={2} mt={6}>
+      <Box display="flex" justifyContent="space-between" mb={1.5} mt={6}>
         <Typography variant="h6"></Typography>
         <Box>
           <Button
-            variant="contained"
-            color="success"
+            variant="outlined"
+            size="small"
+            // startIcon={<VayuBulkUploadIcon />}
             onClick={handleBulkUploadCommands}
           >
-            Bulk Upload Commands
+            Bulk Upload
           </Button>
-
-          {/* Dialog for file upload */}
-          <FileUploadDialog
-            open={openDialog}
-            onClose={handleCloseDialog}
-            onBulkUpload={handleBulkUpload}
-          />
         </Box>
+        {/* Dialog for file upload */}
+        <FileUploadDialog
+          title={dialogTitle}
+          open={openDialog}
+          onClose={handleCloseDialog}
+          onBulkUpload={handleBulkUpload}
+        />
       </Box>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={2}
-      >
-        <Typography variant="h6"></Typography>
-        <Button
-          variant="outlined"
-          size="small"
-          startIcon={<FileDownloadIcon />}
-          onClick={exportCSV}
-        >
-          Export CSV
-        </Button>
-      </Box>
+
       <CustomTable rows={rows} columns={columns} />
     </Box>
   );

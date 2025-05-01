@@ -116,8 +116,7 @@ export default function FieldUserGroups() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" mb={2} mt={6}>
-        <Typography variant="h6"></Typography>
+      <Box display="flex" justifyContent="space-between">
         <Box>
           {/* Dialog for file upload */}
           <CreateUserGroupDialog
@@ -131,7 +130,8 @@ export default function FieldUserGroups() {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        mb={2}
+        mb={1.5}
+        mt={6}
       >
         <Button
           variant="outlined"

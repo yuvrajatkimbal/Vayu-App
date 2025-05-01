@@ -55,11 +55,11 @@ export const vayuSidebarItems = [
     activeIcon: VayuDownloadDataActiveIcon,
     key: "Download Data"
   },
-  {
-    name: "My Profile",
-    path: "/my_profile",
-    icon: VayuProfileIcon,
-    activeIcon: VayuProfileActiveIcon,
-    key: "my_profile"
-  },
+  // {
+  //   name: "Profile",
+  //   path: "/profile",
+  //   icon: VayuProfileIcon,
+  //   activeIcon: VayuProfileActiveIcon,
+  //   key: "profile"
+  // },
 ];

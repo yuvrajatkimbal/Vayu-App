@@ -115,8 +115,7 @@ export default function FieldUsers() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" mb={2} mt={6}>
-        <Typography variant="h6"></Typography>
+      <Box display="flex" justifyContent="space-between">
         <Box>
           {/* Dialog for file upload */}
           <CreateUserDialog
@@ -130,7 +129,8 @@ export default function FieldUsers() {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        mb={2}
+        mb={1.5}
+        mt={6}
       >
         <Button
           variant="outlined"

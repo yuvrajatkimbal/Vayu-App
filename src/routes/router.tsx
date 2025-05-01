@@ -58,7 +58,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: "/",
-        element: <Navigate to="/commands" replace />
+        element: <Navigate to="/meters" replace />
       },
       {
         path: "login",
@@ -126,7 +126,7 @@ const routes: RouteObject[] = [
         element: <PrivateRoute element={Meters} />
       },
       {
-        path: "/my_profile",
+        path: "/profile",
         element: <PrivateRoute element={MyProfile} />
       }
     ]

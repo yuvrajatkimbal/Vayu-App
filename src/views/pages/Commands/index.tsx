@@ -45,21 +45,6 @@ export default function Commands() {
     pageSize: 10
   });
 
-  // const { data, loading } = useDemoData({
-  //   dataSet: 'Commodity',
-  //   rowLength: 500,
-  //   maxColumns: 6,
-  // });
-
-  // const rows = [
-  //   { id: 1, name: "Alice", age: 25, city: "New York" },
-  //   { id: 2, name: "Bob", age: 30, city: "Los Angeles" },
-  //   { id: 3, name: "Charlie", age: 28, city: "Chicago" },
-  //   { id: 4, name: "David", age: 22, city: "San Francisco" },
-  //   { id: 5, name: "Emma", age: 29, city: "Austin" },
-  //   { id: 6, name: "Frank", age: 26, city: "Denver" },
-  // ];
-
   const columns = [
     { field: "id", headerName: "ID", minWidth: 70 },
     { field: "meterNumber", headerName: "Meter Number", minWidth: 150 },
@@ -93,6 +78,7 @@ export default function Commands() {
     console.log("Bulk Upload File: ", file);
     // Handle the bulk upload logic here
   };
+
   const exportCSV = () => {
     const headers = columns.map((c) => c.headerName).join(",");
     const data = rows
@@ -110,40 +96,13 @@ export default function Commands() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" mb={2} mt={6}>
-        <Typography variant="h6"></Typography>
-        <Box>
-          <Button
-            variant="contained"
-            color="error"
-            sx={{ mr: 2 }}
-            onClick={handleBulkCancelCommands}
-          >
-            Bulk Cancel Commands
-          </Button>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={handleBulkUploadCommands}
-          >
-            Bulk Upload Commands
-          </Button>
-
-          {/* Dialog for file upload */}
-          <FileUploadDialog
-            open={openDialog}
-            onClose={handleCloseDialog}
-            onBulkUpload={handleBulkUpload}
-          />
-        </Box>
-      </Box>
       <Box
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        mb={2}
+        mb={1.5}
+        mt={6}
       >
-        <Typography variant="h6"></Typography>
         <Button
           variant="outlined"
           size="small"
@@ -152,6 +111,32 @@ export default function Commands() {
         >
           Export CSV
         </Button>
+        <Box>
+          <Button
+            variant="outlined"
+            size="small"
+            sx={{ mr: 2, borderWidth: 1 }}
+            onClick={handleBulkCancelCommands}
+          >
+            Bulk Cancel Commands
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            sx={{ borderWidth: 1 }}
+            onClick={handleBulkUploadCommands}
+          >
+            Bulk Upload Commands
+          </Button>
+
+          {/* Dialog for file upload */}
+          <FileUploadDialog
+            title={dialogTitle}
+            open={openDialog}
+            onClose={handleCloseDialog}
+            onBulkUpload={handleBulkUpload}
+          />
+        </Box>
       </Box>
       <CustomTable rows={rows} columns={columns} />
     </Box>

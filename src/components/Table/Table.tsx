@@ -28,6 +28,12 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import {
+  DownArrowIcon,
+  UpIcon,
+  VayuDownArrowIcon,
+  VayuUpArrowIcon
+} from "src/assets/svg/svg";
 
 const CustomTable = ({
   rows,
@@ -78,7 +84,6 @@ const CustomTable = ({
       ...prev,
       [field]: { value, type: prev[field]?.type || "contains" }
     }));
-    
   };
 
   const filteredRows = useMemo(() => {
@@ -180,31 +185,7 @@ const CustomTable = ({
   return (
     <Box>
       <Box sx={{ position: "relative" }}>
-        {/* Blurred Edges */}
-        {/* <Box
-  sx={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: 30,
-    height: "100%",
-    zIndex: 2,
-    pointerEvents: "none",
-    background: "linear-gradient(to right, #FFFFFFCC, #FFFFFF00)"
-  }}
-/>
-<Box
-  sx={{
-    position: "absolute",
-    top: 0,
-    right: 0,
-    width: 30,
-    height: "100%",
-    zIndex: 2,
-    pointerEvents: "none",
-    background: "linear-gradient(to left, #FFFFFFCC, #FFFFFF00)"
-  }}
-/> */}
+        <Box></Box>
 
         <TableContainer
           component={Paper}
@@ -218,11 +199,11 @@ const CustomTable = ({
             "&::-webkit-scrollbar": {
               width: "8px",
               height: "8px"
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "#bbb",
-              borderRadius: "4px"
             }
+            // "&::-webkit-scrollbar-thumb": {
+            //   backgroundColor: "black",
+            //   borderRadius: "4px"
+            // }
           }}
         >
           <Table stickyHeader sx={{ minWidth: 1000 }}>
@@ -230,15 +211,15 @@ const CustomTable = ({
               <TableRow
                 sx={{
                   backgroundColor: "#e0f2fe",
-                  boxShadow: "inset 0 -1px 0 rgba(0, 0, 0, 0.1)"
+                  // boxShadow: "inset 0 -1px 0 rgba(0, 0, 0, 0.1)",
+                  border: "1px solid black"
                 }}
               >
-                <TableCell sx={{ backgroundColor: "#e0f2fe" }} />
                 <TableCell
                   padding="checkbox"
                   sx={{
                     backgroundColor: "#e0f2fe",
-                    borderBottom: "1px solid #bae6fd"
+                    borderBottom: "1px solid black"
                   }}
                 >
                   <Checkbox
@@ -250,7 +231,7 @@ const CustomTable = ({
                       setSelected(e.target.checked ? rows.map((r) => r.id) : [])
                     }
                     sx={{
-                      color: "#0284c7",
+                      color: "grey",
                       "&.Mui-checked": {
                         color: "#0284c7"
                       },
@@ -272,7 +253,7 @@ const CustomTable = ({
                         color: "#0f172a",
                         fontSize: "0.9rem",
                         letterSpacing: "0.02em",
-                        borderBottom: "1px solid #bae6fd"
+                        borderBottom: "1px solid black"
                       }}
                     >
                       <Box
@@ -298,7 +279,7 @@ const CustomTable = ({
                           {col.headerName}
                         </TableSortLabel>
 
-                        <IconButton
+                        {/* <IconButton
                           size="small"
                           onClick={(e) => handleClickMenu(e, col.field)}
                           sx={{
@@ -310,11 +291,17 @@ const CustomTable = ({
                           }}
                         >
                           <MoreVertIcon fontSize="small" />
-                        </IconButton>
+                        </IconButton> */}
                       </Box>
                     </TableCell>
                   )
                 )}
+                <TableCell
+                  sx={{
+                    backgroundColor: "#e0f2fe",
+                    borderBottom: "1px solid black" // updated
+                  }}
+                />
               </TableRow>
             </TableHead>
 
@@ -329,17 +316,6 @@ const CustomTable = ({
                       transition: "background-color 0.3s"
                     }}
                   >
-                    <TableCell>
-                      <IconButton
-                        size="small"
-                        onClick={() =>
-                          setExpandedRow(expandedRow === row.id ? null : row.id)
-                        }
-                      >
-                        {expandedRow === row.id ? <RemoveIcon /> : <AddIcon />}
-                      </IconButton>
-                    </TableCell>
-
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={selected.includes(row.id)}
@@ -359,16 +335,31 @@ const CustomTable = ({
                               sx={{
                                 fontSize: "0.85rem",
                                 fontWeight: 600,
+                                borderRadius: "0px",
                                 color:
                                   row.status === "Active"
-                                    ? "#16a34a"
-                                    : "#dc2626",
+                                    ? "#117C39FF"
+                                    : "#BA2222FF",
                                 backgroundColor:
                                   row.status === "Active"
                                     ? "#dcfce7"
                                     : "#fee2e2",
-                                borderRadius: "6px",
                                 height: "32px"
+                              }}
+                              MenuProps={{
+                                PaperProps: {
+                                  sx: {
+                                    "& .MuiMenuItem-root.Mui-selected": {
+                                      backgroundColor: "#1773BA", 
+                                      color: "white",
+                                      fontWeight: "bold"
+                                    },
+                                    "& .MuiMenuItem-root.Mui-selected:hover": {
+                                      backgroundColor: "#1773BA" ,
+                                      color:"white"
+                                    }
+                                  }
+                                }
                               }}
                             >
                               <MenuItem value="Active">Active</MenuItem>
@@ -382,17 +373,30 @@ const CustomTable = ({
                         </TableCell>
                       )
                     )}
+                    <TableCell>
+                      <IconButton
+                        size="small"
+                        onClick={() =>
+                          setExpandedRow(expandedRow === row.id ? null : row.id)
+                        }
+                      >
+                        {expandedRow === row.id ? (
+                          <VayuDownArrowIcon />
+                        ) : (
+                          <VayuUpArrowIcon />
+                        )}
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
 
                   {expandedRow === row.id && (
                     <TableRow>
                       <TableCell colSpan={columns.length + 2} sx={{ p: 0 }}>
                         <Collapse in={true} timeout="auto" unmountOnExit>
-                          <Box
-                            sx={{ p: 2, bgcolor: "#f0f4f8", borderRadius: 1 }}
-                          >
+                          <Box sx={{ p: 2, bgcolor: "#f0f4f8" }}>
                             <Typography variant="body2">
-                              Nested details for{" "}
+                              <b>Details:</b>
+                              <br />
                               <b>{row.name || `Row ${row.id}`}</b>
                             </Typography>
                           </Box>
@@ -415,7 +419,8 @@ const CustomTable = ({
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            borderRadius: 0
+            borderRadius: 0,
+            border: "1px solid #000000FF"
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -423,9 +428,24 @@ const CustomTable = ({
               Rows per page:
             </Typography>
             <FormControl size="small">
-              <Select value={pageSize} onChange={handlePageSizeChange}>
+              <Select
+                sx={{
+                  borderRadius: 0
+                }}
+                value={pageSize}
+                onChange={handlePageSizeChange}
+              >
                 {[10, 20, 50, 100].map((val) => (
-                  <MenuItem key={val} value={val}>
+                  <MenuItem
+                    sx={{
+                      borderRadius: 0,
+                      "&.MuiMenuItem-root": {
+                        borderRadius: 0 // Additional safeguard for the inner MenuItem class
+                      }
+                    }}
+                    key={val}
+                    value={val}
+                  >
                     {val}
                   </MenuItem>
                 ))}
@@ -442,6 +462,11 @@ const CustomTable = ({
             showLastButton
             siblingCount={0}
             boundaryCount={1}
+            sx={{
+              "& .MuiPaginationItem-root": {
+                borderRadius: 0 // <--- 0 border radius for each item
+              }
+            }}
           />
         </Paper>
       </Box>
@@ -471,7 +496,7 @@ const CustomTable = ({
                   borderColor: "black"
                 },
                 "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#3f51b5"
+                  borderColor: "#1773be"
                 }
               }}
             >
@@ -503,7 +528,7 @@ const CustomTable = ({
                 borderColor: "#ccc"
               },
               "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: "#3f51b5"
+                borderColor: "#1773be"
               }
             }}
           />
@@ -515,11 +540,11 @@ const CustomTable = ({
             onClick={applyFilter}
             sx={{
               padding: "4px 16px",
-              borderRadius: "5px",
-              backgroundColor: "#3f51b5",
+              borderRadius: "0px",
+              backgroundColor: "#1773ba",
               color: "white",
               "&:hover": {
-                backgroundColor: "#303f9f"
+                backgroundColor: "#1773ba"
               }
             }}
           >

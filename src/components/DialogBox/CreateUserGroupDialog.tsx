@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -36,47 +36,56 @@ export const CreateUserGroupDialog = ({ open, onClose, onSubmit }: any) => {
       alert("Please enter a group name.");
       return;
     }
-
     onSubmit(formData);
+    handleClose(); // Close after submit
+  };
+
+  const handleClose = () => {
+    setFormData({ groupName: "", status: "Inactive" }); // Reset form on close
     onClose();
   };
+
+  useEffect(() => {
+    if (!open) {
+      setFormData({ groupName: "", status: "Inactive" });
+    }
+  }, [open]);
 
   return (
     <Dialog
       open={open}
-      onClose={onClose}
+      onClose={handleClose}
       maxWidth="sm"
       fullWidth
       PaperProps={{
         sx: {
-          borderRadius: 4,
-          p: 1,
-          background: `linear-gradient(135deg, ${theme.palette.background.paper}, ${theme.palette.grey[100]})`,
-          boxShadow: "0px 10px 35px rgba(0, 0, 0, 0.1)"
+          padding: 2,
+          backgroundColor: theme.palette.background.paper,
+          boxShadow: theme.shadows[5]
         }
       }}
     >
       <DialogTitle
         sx={{
-          fontWeight: 700,
-          fontSize: "1.5rem",
-          color: "#1e293b",
+          fontFamily: "GT Walsheim Pro, sans-serif",
+          fontWeight: 600,
+          fontSize: "1.25rem",
           textAlign: "center",
-          pb: 0
+          pb: 1
         }}
       >
         Create a New Field Group
       </DialogTitle>
 
-      <DialogContent sx={{ mt: 2 }}>
+      <DialogContent
+        sx={{
+          pt: 0,
+          minWidth: { xs: 250, md: 500 }
+        }}
+      >
         <Typography
           variant="body2"
-          sx={{
-            mb: 3,
-            color: "#64748b",
-            textAlign: "center",
-            fontSize: "0.95rem"
-          }}
+          sx={{ color: "grey.700", textAlign: "center", mb: 3 }}
         >
           Enter the group name and choose its status below.
         </Typography>
@@ -91,18 +100,17 @@ export const CreateUserGroupDialog = ({ open, onClose, onSubmit }: any) => {
               onChange={(e) => handleChange("groupName", e.target.value)}
               variant="outlined"
               sx={{
-                borderRadius: 2,
-                background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0,
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& fieldset": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773be"
                   },
                   "&:hover fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: theme.palette.primary.main
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: theme.palette.primary.dark
                   }
                 }
               }}
@@ -110,28 +118,22 @@ export const CreateUserGroupDialog = ({ open, onClose, onSubmit }: any) => {
           </Grid>
 
           <Grid item xs={12}>
-            <FormControl
-              fullWidth
-              sx={{
-                background: "rgba(99, 102, 241, 0.06)",
-                borderRadius: 2
-              }}
-            >
+            <FormControl fullWidth>
               <InputLabel>Status</InputLabel>
               <Select
                 value={formData.status}
                 onChange={(e) => handleChange("status", e.target.value)}
                 label="Status"
                 sx={{
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773be"
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: theme.palette.primary.main
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: theme.palette.primary.dark
                   }
                 }}
               >
@@ -148,19 +150,20 @@ export const CreateUserGroupDialog = ({ open, onClose, onSubmit }: any) => {
 
       <DialogActions
         sx={{
-          justifyContent: "center",
-          px: 4,
+          justifyContent: "space-between",
+          px: 3,
           pb: 3,
           mt: 1,
           gap: 2
         }}
       >
         <Button
-          onClick={onClose}
+          onClick={handleClose}
           variant="outlined"
-          startIcon={<CancelIcon />}
+          color="error"
+          // startIcon={<CancelIcon />}
           sx={{
-            borderRadius: 2,
+            borderRadius: 0,
             textTransform: "none",
             px: 3
           }}
@@ -171,16 +174,16 @@ export const CreateUserGroupDialog = ({ open, onClose, onSubmit }: any) => {
         <Button
           onClick={handleSubmit}
           variant="contained"
-          startIcon={<GroupAddIcon />}
+          // startIcon={<GroupAddIcon />}
           sx={{
-            background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-            color: "#fff",
-            borderRadius: 2,
-            px: 4,
+            borderRadius: 0,
             textTransform: "none",
-            boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)", // You can tweak this shadow if needed
+            px: 4,
+            background: "#1773BE",
+            color: "#fff",
+            // boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)",
             "&:hover": {
-              background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
+              background: "#1773BE"
             }
           }}
         >

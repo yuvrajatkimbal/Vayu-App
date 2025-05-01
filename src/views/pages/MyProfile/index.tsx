@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   TextField,
   Button,
@@ -7,42 +7,55 @@ import {
   Grid,
   Paper,
   useTheme
-} from '@mui/material';
+} from "@mui/material";
+import { setPageTitle } from "src/reducers/common";
+import { useDispatch } from "react-redux";
+import { setLocalStorage } from "src/utils/helper";
 
 export default function MyProfile() {
   const theme = useTheme();
+  const dispatch = useDispatch();
 
-  const [name, setName] = useState('Yuvraj Kumar Singh');
-  const [email, setEmail] = useState('yuvraj@example.com');
-  const [mobile, setMobile] = useState('+91 123 456 7890');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("John Doe");
+  const [email, setEmail] = useState("johndoe@somewhere.com");
+  const [mobile, setMobile] = useState("+91 123 456 7890");
+  const [password, setPassword] = useState("");
 
   const handleUpdate = (field: string, value: string | null) => {
     if (!value) return;
-    if (field === 'name') setName(value);
-    else if (field === 'email') setEmail(value);
-    else if (field === 'mobile') setMobile(value);
-    else if (field === 'password') setPassword(value);
+    if (field === "name") setName(value);
+    else if (field === "email") setEmail(value);
+    else if (field === "mobile") setMobile(value);
+    else if (field === "password") setPassword(value);
   };
+
+
+  useEffect(() => {
+    dispatch(setPageTitle("Profile"));
+    setLocalStorage("pageTitle", "Profile");
+  }, []);
+
 
   return (
     <Paper
-      elevation={4}
+      elevation={1}
       sx={{
-        maxWidth: 900,
-        margin: '60px auto',
-        p: 4,
-        borderRadius: 4,
-        background: `linear-gradient(145deg, #1773BA70, #FFFFFFFF)`,
-        boxShadow: '0 10px 40px rgba(0,0,0,0.08)'
+        p: 2,
+        mt: 8,
+        border: "1px solid #000000FF",
+        borderRadius: 0,
+        backgroundColor: "grey.90"
       }}
     >
-      <Typography variant="h4" align="center" fontWeight={600} gutterBottom>
-        My Profile
+      <Typography sx={{ mb: 1}} variant="h4" fontWeight={600}>
+        Update Profile
       </Typography>
-
-      <Typography variant="subtitle1" align="center" color="text.secondary" mb={4}>
-        You can update your profile details here
+      <Typography
+        sx={{ mb: 4, color: "grey" }}
+        variant="body1"
+        fontWeight={600}
+      >
+        You can update your profile details here.
       </Typography>
 
       <Grid container spacing={4}>
@@ -51,32 +64,19 @@ export default function MyProfile() {
           <Typography variant="subtitle2" sx={{ mb: 1 }}>
             Full Name
           </Typography>
-          <Box display="flex" gap={1}>
-            <TextField
-              fullWidth
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter full name"
-              sx={{ flex: 1 }}
-              InputProps={{
-                sx: {
-                  borderRadius: 2,
-                  backgroundColor: '#f9f9f9'
-                }
-              }}
-            />
-            <Button
-              variant="contained"
-              onClick={() => handleUpdate('name', prompt('Enter new name:', name))}
-              sx={{
-                // borderRadius: 2,
-                height: '53px',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Update
-            </Button>
-          </Box>
+          <TextField
+            fullWidth
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter full name"
+            sx={{ flex: 1 }}
+            InputProps={{
+              sx: {
+                borderRadius: 2,
+                backgroundColor: "#f9f9f9"
+              }
+            }}
+          />
         </Grid>
 
         {/* Email */}
@@ -84,32 +84,19 @@ export default function MyProfile() {
           <Typography variant="subtitle2" sx={{ mb: 1 }}>
             Email Address
           </Typography>
-          <Box display="flex" gap={1}>
-            <TextField
-              fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email"
-              sx={{ flex: 1 }}
-              InputProps={{
-                sx: {
-                  borderRadius: 2,
-                  backgroundColor: '#f9f9f9'
-                }
-              }}
-            />
-            <Button
-              variant="contained"
-              onClick={() => handleUpdate('email', prompt('Enter new email:', email))}
-              sx={{
-                // borderRadius: 2,
-                height: '53px',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Update
-            </Button>
-          </Box>
+          <TextField
+            fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email"
+            sx={{ flex: 1 }}
+            InputProps={{
+              sx: {
+                borderRadius: 2,
+                backgroundColor: "#f9f9f9"
+              }
+            }}
+          />
         </Grid>
 
         {/* Mobile */}
@@ -117,34 +104,19 @@ export default function MyProfile() {
           <Typography variant="subtitle2" sx={{ mb: 1 }}>
             Mobile Number
           </Typography>
-          <Box display="flex" gap={1}>
-            <TextField
-              fullWidth
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-              placeholder="Enter mobile number"
-              sx={{ flex: 1 }}
-              InputProps={{
-                sx: {
-                  borderRadius: 2,
-                  backgroundColor: '#f9f9f9'
-                }
-              }}
-            />
-            <Button
-              variant="contained"
-              onClick={() =>
-                handleUpdate('mobile', prompt('Enter new mobile number:', mobile))
+          <TextField
+            fullWidth
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+            placeholder="Enter mobile number"
+            sx={{ flex: 1 }}
+            InputProps={{
+              sx: {
+                borderRadius: 2,
+                backgroundColor: "#f9f9f9"
               }
-                sx={{
-                  // borderRadius: 2,
-                  height: '53px',
-                  whiteSpace: 'nowrap'
-                }}
-            >
-              Update
-            </Button>
-          </Box>
+            }}
+          />
         </Grid>
 
         {/* Password */}
@@ -152,36 +124,38 @@ export default function MyProfile() {
           <Typography variant="subtitle2" sx={{ mb: 1 }}>
             Password
           </Typography>
-          <Box display="flex" gap={1}>
-            <TextField
-              fullWidth
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-              sx={{ flex: 1 }}
-              InputProps={{
-                sx: {
-                  borderRadius: 2,
-                  backgroundColor: '#f9f9f9'
-                }
-              }}
-            />
-            <Button
-              variant="contained"
-              onClick={() =>
-                handleUpdate('password', prompt('Enter new password:', password))
+          <TextField
+            fullWidth
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+            sx={{ flex: 1 }}
+            InputProps={{
+              sx: {
+                borderRadius: 2,
+                backgroundColor: "#f9f9f9"
               }
-              sx={{
-                // borderRadius: 2,
-                height: '53px',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Update
-            </Button>
-          </Box>
+            }}
+          />
         </Grid>
+        <Button
+          onClick={() => {}}
+          variant="contained"
+          size="medium"
+          color="primary"
+          sx={{
+            color: "#fff",
+            borderRadius: 0,
+            border: "1px solid #000000FF",
+
+            px: 2,
+            mx: 4,
+            mt: 4
+          }}
+        >
+          Update
+        </Button>
       </Grid>
     </Paper>
   );

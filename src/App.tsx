@@ -21,7 +21,6 @@ function App() {
     <ThemeProvider>
       <CssBaseline />
       <Provider store={store}>
-        {/* ✅ Remove ToastProvider and use Toaster instead */}
         <ToastListener />
         <Toaster
           position="top-right"

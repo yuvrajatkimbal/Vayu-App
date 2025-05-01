@@ -2,18 +2,30 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
+  Card,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grid,
   Typography,
+  Link,
   useTheme
 } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from "@mui/icons-material/Download";
 import { UploadFileOutlined } from "@mui/icons-material";
+import { useDropzone } from "react-dropzone";
+import { FileFormatIcon, NMSUploadIcon } from "src/assets/svg/svg";
+import DescriptionIcon from "@mui/icons-material/Description";
+import TableChartIcon from "@mui/icons-material/TableChart";
 
-export const FileUploadDialog = ({ open, onClose, onBulkUpload }: any) => {
+export const FileUploadDialog = ({
+  title,
+  open,
+  onClose,
+  onBulkUpload
+}: any) => {
   const theme = useTheme();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragOver, setIsDragOver] = useState(false);
@@ -33,6 +45,18 @@ export const FileUploadDialog = ({ open, onClose, onBulkUpload }: any) => {
     }
   };
 
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "application/vnd.ms-excel": [".xls", ".xlsx"],
+      "text/csv": [".csv"]
+    },
+    maxSize: 100 * 1024 * 1024,
+    onDrop: (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      setSelectedFile(file);
+    }
+  });
+
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragOver(true);
@@ -40,16 +64,6 @@ export const FileUploadDialog = ({ open, onClose, onBulkUpload }: any) => {
 
   const handleDragLeave = () => {
     setIsDragOver(false);
-  };
-
-  const handleUploadFile = () => {
-    if (selectedFile) {
-      console.log("Uploading file:", selectedFile.name);
-      onBulkUpload(selectedFile);
-      onClose();
-    } else {
-      alert("Please select a file.");
-    }
   };
 
   const handleDownloadSampleCSV = () => {
@@ -69,7 +83,10 @@ export const FileUploadDialog = ({ open, onClose, onBulkUpload }: any) => {
   return (
     <Dialog
       open={open}
-      onClose={onClose}
+      onClose={() => {
+        setSelectedFile(null); // Reset selected file when closing the dialog
+        onClose();
+      }}
       PaperProps={{
         sx: {
           borderRadius: "16px",
@@ -79,110 +96,232 @@ export const FileUploadDialog = ({ open, onClose, onBulkUpload }: any) => {
         }
       }}
     >
+      {" "}
       <DialogTitle
         sx={{
           fontFamily: "GT Walsheim Pro, sans-serif",
           fontWeight: 600,
-          fontSize: "1.25rem"
+          fontSize: "1.25rem",
+          textAlign: "center",
+          pb: 1
         }}
       >
-        Upload Commands
+        {title}
       </DialogTitle>
-
-      <DialogContent sx={{ pt: 0 }}>
+      
+      <DialogContent
+        sx={{
+          pt: 0,
+          minWidth: { xs: 300, md: 500 } // <-- This will ensure stable sizing
+        }}
+      >
         <Typography
+          sx={{ color: "grey.700" }}
           variant="body2"
-          sx={{ mb: 2, fontFamily: "GT Walsheim Pro, sans-serif" }}
+          textAlign="center"
         >
-          Drag and drop a CSV file or click to select manually.
+          You can upload file via drag and drop or by clicking the upload
+          button.
         </Typography>
+        <Grid item xs={12} md={6}>
+          <Card
+            variant="outlined"
+            sx={{
+              p: 3,
+              mt: 2,
+              textAlign: "center",
+              borderStyle: "dashed",
+              borderColor: "#1773BE",
+              backgroundColor: "#ECF4FA",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+              // minHeight: 180, // Ensures size is stable
+            }}
+            {...getRootProps()}
+          >
+            <input {...getInputProps()} />
 
-        <Box
-          component="label"
-          // htmlFor="upload-csv"
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: 120,
-            border: `2px dashed ${
-              isDragOver ? theme.palette.primary.main : theme.palette.divider
-            }`,
-            borderRadius: "12px",
-            cursor: "pointer",
-            backgroundColor: isDragOver
-              ? theme.palette.action.selected
-              : theme.palette.action.hover,
-            mb: 2,
-            textAlign: "center",
-            color: theme.palette.text.secondary,
-            fontFamily: "GT Walsheim Pro, sans-serif",
-            transition: "all 0.2s ease-in-out"
-          }}
-        >
-          <input
-            id="upload-csv"
-            type="file"
-            accept=".csv"
-            hidden
-            onChange={handleFileChange}
-          />
-          <Typography variant="body2">
-            {selectedFile
-              ? selectedFile.name
-              : "Drop file here or click to upload"}
-          </Typography>
-        </Box>
+            {/* If file is selected */}
+            {selectedFile ? (
+              <>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    mb: 2
+                  }}
+                >
+                  {selectedFile.name.endsWith(".csv") ? (
+                    <DescriptionIcon sx={{ fontSize: 40, color: "#1773BE" }} />
+                  ) : (
+                    <TableChartIcon sx={{ fontSize: 40, color: "#1773BE" }} />
+                  )}
 
-        <Button
-          fullWidth
-          variant="outlined"
-          startIcon={<DownloadIcon />}
-          onClick={handleDownloadSampleCSV}
-          sx={{ fontFamily: "GT Walsheim Pro, sans-serif", mb: 1 }}
-        >
-          Download Sample CSV
-        </Button>
+                  {/* File name */}
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ wordBreak: "break-word", mt: 1 }}
+                  >
+                    {selectedFile.name}
+                  </Typography>
+                </Box>
+
+                {/* Action buttons */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: 2
+                  }}
+                >
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                      textTransform: "none",
+                      color: "#1773BE",
+                      borderColor: "#1773BE"
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent opening file picker
+                      const url = URL.createObjectURL(selectedFile);
+                      window.open(url, "_blank");
+                    }}
+                  >
+                    View
+                  </Button>
+
+                  <Button
+                    variant="contained"
+                    size="small"
+                    sx={{ textTransform: "none", backgroundColor: "#1773BE" }}
+                    onClick={(e) => {
+                      // e.stopPropagation(); // prevent card click opening picker
+                      // document.querySelector('input[type="file"]');
+                      getRootProps();
+                    }}
+                  >
+                    Replace
+                  </Button>
+                </Box>
+              </>
+            ) : (
+              // Before file is uploaded
+              <>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 1
+                  }}
+                >
+                  <NMSUploadIcon sx={{ paddingRight: "8px" }} />
+                  <Typography
+                    color="primary"
+                    fontWeight="bold"
+                    sx={{ color: "#1773BE", pl: 1 }}
+                  >
+                    Upload file
+                  </Typography>
+                </Box>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ marginBottom: 1 }}
+                >
+                  Max file size: 100MB
+                  <br />
+                  Supported formats: CSV, XLSX
+                </Typography>
+              </>
+            )}
+          </Card>
+
+          {/* Instruction & Download Sample - Show only when no file is selected */}
+          {!selectedFile && (
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              mt={2}
+            >
+              <Typography variant="body2" color="text.secondary">
+                File should contain Meter ID, Meter Number and Command
+              </Typography>
+              <Button
+                variant="text"
+                size="small"
+                sx={{
+                  color: "#1773BE",
+                  textTransform: "none",
+                  "&:hover": { textDecoration: "underline" },
+                  pr: 2
+                }}
+                onClick={async () => {
+                  const fileUrl =
+                    "https://present-blue-antlion.myfilebase.com/ipfs/QmSF1xjA2auTh1qPzST69J1QX1nF8Vbysa6UjVdx6TWw43";
+                  const response = await fetch(fileUrl);
+
+                  if (response.ok) {
+                    const blob = await response.blob();
+                    const link = document.createElement("a");
+                    link.href = URL.createObjectURL(blob);
+                    link.download = "sample-file";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  } else {
+                    console.error("Failed to fetch file");
+                  }
+                }}
+              >
+                Download Sample
+              </Button>
+            </Box>
+          )}
+        </Grid>
       </DialogContent>
-
       <DialogActions
         sx={{
-          justifyContent: "center",
-          px: 4,
-          pb: 3,
+          justifyContent: "space-between",
+          px: 2.5,
+          pb: 2,
           mt: 1,
-          gap: 2
+          // gap: 2,
+          alignItems: "center" // optional, aligns buttons vertically
         }}
       >
         <Button
           onClick={onClose}
           variant="outlined"
-          startIcon={<CancelIcon />}
+          color="error"
+          // startIcon={<CancelIcon />}
           sx={{
-            borderRadius: 2,
+            borderRadius: 0,
             textTransform: "none",
-            px: 3
+            px: 4
           }}
         >
           Cancel
         </Button>
 
         <Button
-          onClick={handleUploadFile}
-          variant="contained"
-          startIcon={<UploadFileOutlined />}
+          onClick={onBulkUpload}
+          variant="outlined"
+          // startIcon={<UploadFileOutlined />}
           sx={{
-            background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+            background: "#1773BA",
             color: "#fff",
-            borderRadius: 2,
+            borderRadius: 0,
             px: 4,
             textTransform: "none",
-            boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)", // You can tweak this shadow if needed
+            // boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)", // You can tweak this shadow if needed
             "&:hover": {
-              background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
+              background: "#1773BE"
             }
           }}
         >

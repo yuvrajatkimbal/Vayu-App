@@ -62,10 +62,10 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
       fullWidth
       PaperProps={{
         sx: {
-          borderRadius: 4,
+          borderRadius: 2,
           p: 1,
-          background: `linear-gradient(135deg, ${theme.palette.background.paper}, ${theme.palette.grey[100]})`,
-          boxShadow: "0px 10px 35px rgba(0, 0, 0, 0.1)"
+          // background: `linear-gradient(135deg, ${theme.palette.background.paper}, ${theme.palette.grey[100]})`,
+          // boxShadow: "0px 10px 35px rgba(0, 0, 0, 0.1)"
         }
       }}
     >
@@ -73,7 +73,6 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
         sx={{
           fontWeight: 700,
           fontSize: "1.5rem",
-          color: "#1e293b",
           textAlign: "center",
           pb: 0
         }}
@@ -86,7 +85,7 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
           variant="body2"
           sx={{
             mb: 3,
-            color: "#64748b",
+            color: "grey",
             textAlign: "center",
             fontSize: "0.95rem"
           }}
@@ -105,18 +104,18 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
               onChange={(e) => handleChange("email", e.target.value)}
               type="email"
               sx={{
-                borderRadius: 2,
-                background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0,
+                // background: "rgba(99, 102, 241, 0.06)",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& fieldset": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }
               }}
@@ -132,18 +131,18 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
               value={formData.name}
               onChange={(e) => handleChange("name", e.target.value)}
               sx={{
-                borderRadius: 2,
-                background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0,
+                // background: "rgba(99, 102, 241, 0.06)",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& fieldset": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }
               }}
@@ -160,18 +159,18 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
               type="tel"
               inputProps={{ maxLength: 10 }}
               sx={{
-                borderRadius: 2,
-                background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0,
+                // background: "rgba(99, 102, 241, 0.06)",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& fieldset": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }
               }}
@@ -187,18 +186,18 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
               onChange={(e) => handleChange("password", e.target.value)}
               type="password"
               sx={{
-                borderRadius: 2,
-                background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0,
+                // background: "rgba(99, 102, 241, 0.06)",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& fieldset": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }
               }}
@@ -209,8 +208,8 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
             <FormControl
               fullWidth
               sx={{
-                background: "rgba(99, 102, 241, 0.06)",
-                borderRadius: 2
+                // background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0
               }}
             >
               <InputLabel>Select a User Group</InputLabel>
@@ -219,20 +218,29 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
                 onChange={(e) => handleChange("userGroup", e.target.value)}
                 label="Select a User Group"
                 sx={{
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }}
               >
                 {userGroups.map((group) => (
-                  <MenuItem key={group} value={group}>
+                  <MenuItem
+                    sx={{
+                      borderRadius: 0,
+                      "&.MuiMenuItem-root": {
+                        borderRadius: 0 // Additional safeguard for the inner MenuItem class
+                      }
+                    }}
+                    key={group}
+                    value={group}
+                  >
                     {group}
                   </MenuItem>
                 ))}
@@ -244,8 +252,8 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
             <FormControl
               fullWidth
               sx={{
-                background: "rgba(99, 102, 241, 0.06)",
-                borderRadius: 2
+                // background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0
               }}
             >
               <InputLabel>Select Role</InputLabel>
@@ -254,15 +262,15 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
                 onChange={(e) => handleChange("role", e.target.value)}
                 label="Select Role"
                 sx={{
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }}
               >
@@ -279,8 +287,8 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
             <FormControl
               fullWidth
               sx={{
-                background: "rgba(99, 102, 241, 0.06)",
-                borderRadius: 2
+                // background: "rgba(99, 102, 241, 0.06)",
+                borderRadius: 0
               }}
             >
               <InputLabel>User Group Name</InputLabel>
@@ -289,15 +297,15 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
                 onChange={(e) => handleChange("userGroupNames", e.target.value)}
                 label="Select User Group Name"
                 sx={{
-                  borderRadius: 2,
+                  borderRadius: 0,
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#c7d2fe"
+                    borderColor: "#1773BA"
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#6366f1"
+                    borderColor: "#1773BE"
                   }
                 }}
               >
@@ -314,8 +322,8 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
 
       <DialogActions
         sx={{
-          justifyContent: "center",
-          px: 4,
+          justifyContent: "space-between",
+          px: 3,
           pb: 3,
           mt: 1,
           gap: 2
@@ -324,9 +332,10 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
         <Button
           onClick={onClose}
           variant="outlined"
-          startIcon={<CancelIcon />}
+          // startIcon={<CancelIcon />}
+          color="error"
           sx={{
-            borderRadius: 2,
+            borderRadius: 0,
             textTransform: "none",
             px: 3
           }}
@@ -337,16 +346,16 @@ export const CreateUserDialog = ({ open, onClose, onSubmit }: any) => {
         <Button
           onClick={handleSubmit}
           variant="contained"
-          startIcon={<PersonAddAltIcon />}
+          // startIcon={<PersonAddAltIcon />}
           sx={{
-            background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+            background: "#1773BA",
             color: "#fff",
-            borderRadius: 2,
+            borderRadius: 0,
             px: 4,
             textTransform: "none",
-            boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)", // You can tweak this shadow if needed
+            // boxShadow: "0px 4px 14px rgba(99, 102, 241, 0.3)", // You can tweak this shadow if needed
             "&:hover": {
-              background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
+              background: "#1773BE",
             }
           }}
         >
