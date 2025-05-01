@@ -47,13 +47,13 @@ export default function Commands() {
 
   const columns = [
     { field: "id", headerName: "ID", minWidth: 70 },
-    { field: "meterNumber", headerName: "Meter Number", minWidth: 150 },
+    { field: "meterNumber", headerName: "Meter Number", minWidth: 180 },
     { field: "commandType", headerName: "Command Type", minWidth: 180 },
-    { field: "commandValue", headerName: "Command Value", minWidth: 150 },
+    { field: "commandValue", headerName: "Command Value", minWidth: 200 },
     { field: "meterStatus", headerName: "Status", minWidth: 100 },
-    { field: "syncStatus", headerName: "Sync Status", minWidth: 130 },
+    { field: "syncStatus", headerName: "Sync Status", minWidth: 150 },
     { field: "createdOn", headerName: "Created On", minWidth: 180 },
-    { field: "userGroup", headerName: "User Group", minWidth: 120 },
+    { field: "userGroup", headerName: "User Group", minWidth: 150 },
     { field: "groupCode", headerName: "Group Code", minWidth: 150 }
   ];
 

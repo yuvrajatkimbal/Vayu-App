@@ -253,7 +253,8 @@ const CustomTable = ({
                         color: "#0f172a",
                         fontSize: "0.9rem",
                         letterSpacing: "0.02em",
-                        borderBottom: "1px solid black"
+                        borderBottom: "1px solid black",
+                        minWidth: col.minWidth
                       }}
                     >
                       <Box
@@ -325,7 +326,7 @@ const CustomTable = ({
 
                     {columns.map((col) =>
                       col.field === "status" ? (
-                        <TableCell key={`${row.id}-status`}>
+                        <TableCell key={`${row.id}-status`}  align="center">
                           <FormControl size="small" fullWidth>
                             <Select
                               value={row.status ?? "Inactive"}
@@ -350,13 +351,13 @@ const CustomTable = ({
                                 PaperProps: {
                                   sx: {
                                     "& .MuiMenuItem-root.Mui-selected": {
-                                      backgroundColor: "#1773BA", 
+                                      backgroundColor: "#1773BA",
                                       color: "white",
                                       fontWeight: "bold"
                                     },
                                     "& .MuiMenuItem-root.Mui-selected:hover": {
-                                      backgroundColor: "#1773BA" ,
-                                      color:"white"
+                                      backgroundColor: "#1773BA",
+                                      color: "white"
                                     }
                                   }
                                 }

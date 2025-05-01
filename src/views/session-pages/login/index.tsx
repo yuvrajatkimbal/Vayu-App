@@ -158,12 +158,12 @@ const index = () => {
   return (
     <>
       {loading && <CustomBackdrop open={loading} />}
-      <MainWrapper label={"Login"} submitHandler={(e)=>{
+      <MainWrapper label={"Login"}  submitHandler={(e)=>{
         toast.success("Welcome to HES Vayu App");
         // handleSubmit(e);
         navigate('/');
       }}>
-        <Box>
+        <Box >
           <Box mt={3} mb={2}>
             <Typography className="f-25"> Login </Typography>
           </Box>

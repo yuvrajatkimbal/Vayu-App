@@ -262,7 +262,7 @@ export const RightIcon = (props) => (
     {...props}
   >
     <path
-      stroke="#000"
+      stroke="#000000"
       strokeMiterlimit={10}
       strokeWidth={2}
       d="m6.61 1.313 8.188 8.838L6.61 19M.112 10.024h14.43"

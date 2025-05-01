@@ -7,6 +7,7 @@ import { useTheme } from "@mui/material";
 import MuiCard from "@mui/material/Card";
 import styled from "@emotion/styled";
 import { RightIcon } from "src/assets/svg/svg";
+import { ArrowRight, ArrowRightAltRounded, ForkRightSharp } from "@mui/icons-material";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -40,9 +41,9 @@ const MainWrapper: React.FC<MainWrapperProps> = ({
           onSubmit={submitHandler}
           noValidate
           sx={{
-            margin: "0px 36px",
+            margin: "0px 0px",
             // margin: 6,
-            padding: 6,
+            padding: 2,
             // border: '1px solid black',
             minHeight: 100,
             width: "100%"
@@ -77,20 +78,23 @@ const MainWrapper: React.FC<MainWrapperProps> = ({
                 variant="contained"
                 // onClick={submitHandler}
                 className="filter-button"
-                endIcon={<RightIcon />}
                 sx={{
                   background: theme.colors.alpha.primary[100],
-                  color: theme.colors.alpha.black[100],
+                  color: "white",
                   border: `1px solid ${theme.colors.alpha.black[100]}`,
                   fontSize: "20px",
                   fontWeight: "500",
-                  "& .MuiButton-endIcon": {
-                    marginLeft: 3 // Adjust the value as needed
+                  // "& .MuiButton-endIcon": {
+                  //   marginLeft: 1 // Adjust the value as needed
+                  // },
+                  "&:hover": {
+                    background: theme.colors.alpha.primary[100],
+                    color: theme.colors.alpha.black[100]
                   },
                   mt:2,
-                  "& .button-text": {
-                    marginRight: 3 // Adjust the value as needed
-                  }
+                  // "& .button-text": {
+                  //   marginRight: 1 // Adjust the value as needed
+                  // }
                 }}
               >
                 {label || "Enter"}
