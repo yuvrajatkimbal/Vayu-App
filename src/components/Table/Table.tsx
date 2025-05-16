@@ -38,7 +38,8 @@ import {
 const CustomTable = ({
   rows,
   columns,
-  handleStatusChange = (id, value) => {}
+  handleStatusChange = (id, value) => {},
+  isSelectionEnabled
 }) => {
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState([]);
@@ -215,32 +216,36 @@ const CustomTable = ({
                   border: "1px solid black"
                 }}
               >
-                <TableCell
-                  padding="checkbox"
-                  sx={{
-                    backgroundColor: "#e0f2fe",
-                    borderBottom: "1px solid black"
-                  }}
-                >
-                  <Checkbox
-                    checked={selected.length === rows.length}
-                    indeterminate={
-                      selected.length > 0 && selected.length < rows.length
-                    }
-                    onChange={(e) =>
-                      setSelected(e.target.checked ? rows.map((r) => r.id) : [])
-                    }
+                {isSelectionEnabled && (
+                  <TableCell
+                    padding="checkbox"
                     sx={{
-                      color: "grey",
-                      "&.Mui-checked": {
-                        color: "#0284c7"
-                      },
-                      "&.MuiCheckbox-indeterminate": {
-                        color: "#0284c7"
-                      }
+                      backgroundColor: "#e0f2fe",
+                      borderBottom: "1px solid black"
                     }}
-                  />
-                </TableCell>
+                  >
+                    <Checkbox
+                      checked={selected.length === rows.length}
+                      indeterminate={
+                        selected.length > 0 && selected.length < rows.length
+                      }
+                      onChange={(e) =>
+                        setSelected(
+                          e.target.checked ? rows.map((r) => r.id) : []
+                        )
+                      }
+                      sx={{
+                        color: "grey",
+                        "&.Mui-checked": {
+                          color: "#0284c7"
+                        },
+                        "&.MuiCheckbox-indeterminate": {
+                          color: "#0284c7"
+                        }
+                      }}
+                    />
+                  </TableCell>
+                )}
 
                 {columns.map((col) =>
                   col.field === "id" ? null : (
@@ -280,7 +285,7 @@ const CustomTable = ({
                           {col.headerName}
                         </TableSortLabel>
 
-                        {/* <IconButton
+                        <IconButton
                           size="small"
                           onClick={(e) => handleClickMenu(e, col.field)}
                           sx={{
@@ -292,7 +297,7 @@ const CustomTable = ({
                           }}
                         >
                           <MoreVertIcon fontSize="small" />
-                        </IconButton> */}
+                        </IconButton>
                       </Box>
                     </TableCell>
                   )
@@ -317,16 +322,18 @@ const CustomTable = ({
                       transition: "background-color 0.3s"
                     }}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={selected.includes(row.id)}
-                        onChange={() => handleSelect(row.id)}
-                      />
-                    </TableCell>
+                    {isSelectionEnabled && (
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={selected.includes(row.id)}
+                          onChange={() => handleSelect(row.id)}
+                        />
+                      </TableCell>
+                    )}
 
                     {columns.map((col) =>
                       col.field === "status" ? (
-                        <TableCell key={`${row.id}-status`}  align="center">
+                        <TableCell key={`${row.id}-status`} align="center">
                           <FormControl size="small" fullWidth>
                             <Select
                               value={row.status ?? "Inactive"}
@@ -471,6 +478,7 @@ const CustomTable = ({
           />
         </Paper>
       </Box>
+      
 
       {/* Filter Menu */}
       <Menu

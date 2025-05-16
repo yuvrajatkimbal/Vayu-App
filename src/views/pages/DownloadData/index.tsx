@@ -19,8 +19,7 @@ const DownloadData = () => {
   const theme = useTheme();
 
   return (
-    <Paper
-      elevation={1}
+    <Box
       sx={{
         p: 2,
         mt: 8,
@@ -86,7 +85,13 @@ const DownloadData = () => {
           sx={{
             color: "#fff",
             borderRadius: 0,
-            border: "1px solid #000000FF",
+            border: "1px solid #1773BA",
+            backgroundColor: "#1773BA",
+            "&:hover": {
+              color: "#fff",
+              backgroundColor: "#005597FF",
+              border: "1px solid #005597FF"
+            },
 
             px: 2,
             mx: 4,
@@ -96,7 +101,7 @@ const DownloadData = () => {
           Export
         </Button>
       </Grid>
-    </Paper>
+    </Box>
   );
 };
 

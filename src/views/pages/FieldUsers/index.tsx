@@ -83,6 +83,8 @@ export default function FieldUsers() {
 
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTitle, setDialogTitle] = useState("");
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState(false);
+  const [selectedRows, setSelectedRows] = useState<any[]>([]);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -159,6 +161,7 @@ export default function FieldUsers() {
           );
           setTableRows(updatedRows);
         }}
+        isSelectionEnabled={isSelectionEnabled}
       />
     </Box>
   );

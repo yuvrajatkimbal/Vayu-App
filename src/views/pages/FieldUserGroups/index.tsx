@@ -24,6 +24,8 @@ export default function FieldUserGroups() {
     page: 1,
     pageSize: 10
   });
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState(false);
+  const [selectedRows, setSelectedRows] = useState<any[]>([]);
 
   // const { data, loading } = useDemoData({
   //   dataSet: 'Commodity',
@@ -159,6 +161,7 @@ export default function FieldUserGroups() {
           );
           setTableRows(updatedRows);
         }}
+        isSelectionEnabled={isSelectionEnabled}
       />
     </Box>
   );

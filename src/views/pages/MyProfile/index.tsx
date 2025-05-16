@@ -32,15 +32,15 @@ export default function MyProfile() {
 
   useEffect(() => {
     dispatch(setPageTitle("Profile"));
-    setLocalStorage("pageTitle", "Profile");
+    setLocalStorage("title", "Profile");
   }, []);
 
 
   return (
-    <Paper
-      elevation={1}
+    <Box
+      // elevation={1}
       sx={{
-        p: 2,
+        p: 3,
         mt: 8,
         border: "1px solid #000000FF",
         borderRadius: 0,
@@ -157,6 +157,6 @@ export default function MyProfile() {
           Update
         </Button>
       </Grid>
-    </Paper>
+    </Box>
   );
 }

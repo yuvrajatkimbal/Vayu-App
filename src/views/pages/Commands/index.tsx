@@ -14,6 +14,7 @@ import Table from "src/components/Table/Table";
 import CustomTable from "src/components/Table/Table";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { FileUploadDialog } from "src/components/DialogBox/UploadDialog";
+import FilterHeader from "src/components/Filter/FilterHeader";
 
 const columns = [
   { field: "meterNumber", headerName: "Meter Number", width: 150 },
@@ -44,6 +45,8 @@ export default function Commands() {
     page: 1,
     pageSize: 10
   });
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState(false);
+  const [selectedRows, setSelectedRows] = useState<any[]>([]);
 
   const columns = [
     { field: "id", headerName: "ID", minWidth: 70 },
@@ -94,51 +97,21 @@ export default function Commands() {
     link.click();
   };
 
-  return (
-    <Box>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={1.5}
-        mt={6}
-      >
-        <Button
-          variant="outlined"
-          size="small"
-          startIcon={<FileDownloadIcon />}
-          onClick={exportCSV}
-        >
-          Export CSV
-        </Button>
-        <Box>
-          <Button
-            variant="outlined"
-            size="small"
-            sx={{ mr: 2, borderWidth: 1 }}
-            onClick={handleBulkCancelCommands}
-          >
-            Bulk Cancel Commands
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            sx={{ borderWidth: 1 }}
-            onClick={handleBulkUploadCommands}
-          >
-            Bulk Upload Commands
-          </Button>
 
-          {/* Dialog for file upload */}
-          <FileUploadDialog
-            title={dialogTitle}
-            open={openDialog}
-            onClose={handleCloseDialog}
-            onBulkUpload={handleBulkUpload}
-          />
-        </Box>
-      </Box>
-      <CustomTable rows={rows} columns={columns} />
+  return (
+    <Box >
+      <FilterHeader
+        isCommandsPage={true}
+        dialogTitle={dialogTitle}
+        openDialog={openDialog}
+        exportCSV={exportCSV}
+        handleBulkUpload={(file) => handleBulkUpload(file)}
+        handleCloseDialog={handleCloseDialog}
+        handleBulkUploadCommands={handleBulkUploadCommands}
+        toggleSelectionState={() => setIsSelectionEnabled(!isSelectionEnabled)}
+        isSelectionEnabled={isSelectionEnabled}
+      />
+      <CustomTable rows={rows} columns={columns} isSelectionEnabled={isSelectionEnabled} />
     </Box>
   );
 }

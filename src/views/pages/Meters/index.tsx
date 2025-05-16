@@ -21,6 +21,8 @@ import { setLocalStorage } from "src/utils/helper";
 import { useDispatch } from "react-redux";
 import { UploadIcon, VayuBulkUploadIcon } from "src/assets/svg/svg";
 import { CloudUpload } from "@mui/icons-material";
+import FilterHeader from "src/components/Filter/FilterHeader";
+import { is } from "date-fns/locale";
 
 const columns = [
   { field: "meterNumber", headerName: "Meter Number", width: 150 },
@@ -52,6 +54,8 @@ export default function Meters() {
     pageSize: 10
   });
 
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState(false);
+  const [selectedRows, setSelectedRows] = useState<any[]>([]);
   // const { data, loading } = useDemoData({
   //   dataSet: 'Commodity',
   //   rowLength: 500,
@@ -101,6 +105,7 @@ export default function Meters() {
     console.log("Bulk Upload File: ", file);
     // Handle the bulk upload logic here
   };
+
   const exportCSV = () => {
     const headers = columns.map((c) => c.headerName).join(",");
     const data = rows
@@ -137,28 +142,22 @@ export default function Meters() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" mb={1.5} mt={6}>
-        <Typography variant="h6"></Typography>
-        <Box>
-          <Button
-            variant="outlined"
-            size="small"
-            // startIcon={<VayuBulkUploadIcon />}
-            onClick={handleBulkUploadCommands}
-          >
-            Bulk Upload
-          </Button>
-        </Box>
-        {/* Dialog for file upload */}
-        <FileUploadDialog
-          title={dialogTitle}
-          open={openDialog}
-          onClose={handleCloseDialog}
-          onBulkUpload={handleBulkUpload}
-        />
-      </Box>
+      <FilterHeader
+        isMetersPage={true}
+        dialogTitle={dialogTitle}
+        openDialog={openDialog}
+        handleCloseDialog={handleCloseDialog}
+        handleBulkUploadCommands={handleBulkUploadCommands}
+        handleBulkUpload={(file) => handleBulkUpload(file)}
+        toggleSelectionState={() => setIsSelectionEnabled(!isSelectionEnabled)}
+        isSelectionEnabled={isSelectionEnabled}
+      />
 
-      <CustomTable rows={rows} columns={columns} />
+      <CustomTable
+        rows={rows}
+        columns={columns}
+        isSelectionEnabled={isSelectionEnabled}
+      />
     </Box>
   );
 }
